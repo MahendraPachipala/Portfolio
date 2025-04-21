@@ -104,7 +104,7 @@ export default function TechStack() {
           transition={{ delay: 0.4, duration: 0.8 }}
         >
           <p className="text-gray-400 italic">
-            "Mastery is not about knowing all the tools, but knowing which tool to use and when."
+          &quot;Mastery is not about knowing all the tools, but knowing which tool to use and when.&quot;
           </p>
         </motion.div>
       </div>
