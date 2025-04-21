@@ -126,7 +126,7 @@ export default function Home() {
               <Link href="https://github.com/MahendraPachipala" target="_blank">
                 <FaGithub size={30} className="hover:text-gray-400 transition duration-300" />
               </Link>
-              <Link href="https://linkedin.com/in/naga-mahendra-pachipala" target="_blank">
+              <Link href="https://www.linkedin.com/in/naga-mahendra-pachipala-54216623a/" target="_blank">
                 <FaLinkedin size={30} className="hover:text-gray-400 transition duration-300" />
               </Link>
               <Link href="mailto:mahendrapachipala123@gmail.com">
@@ -155,7 +155,7 @@ export default function Home() {
           <Link href="https://github.com/MahendraPachipala" target="_blank">
             <FaGithub size={30} className="hover:text-gray-400" />
           </Link>
-          <Link href="https://linkedin.com/in/naga-mahendra-pachipala" target="_blank">
+          <Link href="https://www.linkedin.com/in/naga-mahendra-pachipala-54216623a/" target="_blank">
             <FaLinkedin size={30} className="hover:text-gray-400" />
           </Link>
           <Link href="mailto:mahendrapachipala123@gmail.com">
