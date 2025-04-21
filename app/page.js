@@ -1,101 +1,177 @@
+"use client";
 import Image from "next/image";
+import CustomCursor from "@/components/Cursor";
+import { useEffect, useState } from "react";
+import Hamburger from "@/components/hamburger";
+import Link from "next/link";
+import { FaArrowAltCircleDown } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import Typewriter from "typewriter-effect";
+import TechStack from "@/components/TechStack";
+import GitHubStats from "@/components/Github";
+import Projects from "@/components/Projects";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [component, setComponent] = useState(null);
+  const [showDiv, setShowDiv] = useState(true);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowDiv(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // List of sections for smooth scrolling
+  const sections = ["home", "tech-stack", "projects", "contact"];
+
+  const scrollToProjects = () => {   
+    document
+        .getElementById("projects")
+        ?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const scrollToNextSection = () => {
+    const currentSectionIndex = sections.findIndex((id) => {
+      const section = document.getElementById(id);
+      if (!section) return false;
+      return section.getBoundingClientRect().top >= 0;
+    });
+
+    if (currentSectionIndex !== -1 && currentSectionIndex < sections.length - 1) {
+      document
+        .getElementById(sections[currentSectionIndex + 1])
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="bg-black text-white relative">
+      <CustomCursor component={component} />
+      <Hamburger />
+
+      {/* Hero Section */}
+      <header id="home" className="relative min-h-[100vh] flex items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black text-white">
+        <div className="scale-130 flex flex-col md:flex-row-reverse items-center md:items-start gap-6">
+          
+          {/* Profile Image with Fade-in Effect */}
+          <div
+            className={`w-40 h-40 md:w-52 md:h-52 transform ease-in-out duration-1000 scale-110 transition-opacity ${
+              showDiv ? "opacity-0" : "opacity-100"
+            }`}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {!showDiv && (
+              <Image
+                src="/images/profile.png"
+                alt="Profile"
+                width={200}
+                height={200}
+                className="rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+                priority
+              />
+            )}
+          </div>
+
+          {/* Text Section */}
+          <div className="text-center md:text-left">
+            <h1 className="text-5xl h-14 font-extrabold tracking-wide fadein-text transition-opacity duration-1000">
+              Naga Mahendra Pachipala
+            </h1>
+
+            {/* Typing Effect for Title */}
+            <div className="text-md font-semibold fadein-text">
+              <Typewriter
+                options={{
+                  strings: ["Web Developer", "MERN Stack Engineer", "Full-Stack Developer"],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </div>
+
+            <p
+              className={`transform transition-opacity ease-in-out duration-2000 ${
+                showDiv ? "opacity-0" : "opacity-100"
+              } metaltext w-150`}
+            >
+              Passionate full-stack web developer with expertise in React.js,
+              Next.js, Node.js, Express.js, and MongoDB.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className={`mt-6 ease-in-out duration-2000 ${
+                  showDiv ? "opacity-0" : "opacity-100"
+                } flex gap-4 justify-center md:justify-start`}>
+              <a
+                href="https://drive.google.com/file/d/1Ny7nGb4z3A4aynCbcW0n4es2mOtJYjeX/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition"
+              >
+                View Resume
+              </a>
+
+              <button
+                onClick={scrollToProjects}
+                className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-lg shadow-md transition"
+              >
+                View Projects
+              </button>
+            </div>
+
+            {/* Social Links */}
+            <div className={`ease-in-out duration-2000 ${
+                  showDiv ? "opacity-0" : "opacity-100"
+                } flex gap-6 mt-5 justify-center md:justify-start`}>
+              <Link href="https://github.com/MahendraPachipala" target="_blank">
+                <FaGithub size={30} className="hover:text-gray-400 transition duration-300" />
+              </Link>
+              <Link href="https://linkedin.com/in/naga-mahendra-pachipala" target="_blank">
+                <FaLinkedin size={30} className="hover:text-gray-400 transition duration-300" />
+              </Link>
+              <Link href="mailto:mahendrapachipala123@gmail.com">
+                <FaEnvelope size={30} className="hover:text-gray-400 transition duration-300" />
+              </Link>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </header>
+
+      {/* Tech Stack Section */}
+      <section id="tech-stack">
+        <TechStack />
+      </section>
+
+      {/* Projects Section */}
+      <Projects />
+
+      
+
+      {/* Contact Section */}
+      <section id="contact" className="p-8 text-center">
+        <h2 className="text-3xl font-bold mb-4">Contact</h2>
+        <p>Feel free to reach out via email or connect with me on social media.</p>
+        <div className="flex justify-center space-x-6 mt-4">
+          <Link href="https://github.com/MahendraPachipala" target="_blank">
+            <FaGithub size={30} className="hover:text-gray-400" />
+          </Link>
+          <Link href="https://linkedin.com/in/naga-mahendra-pachipala" target="_blank">
+            <FaLinkedin size={30} className="hover:text-gray-400" />
+          </Link>
+          <Link href="mailto:mahendrapachipala123@gmail.com">
+                <FaEnvelope size={30} className="hover:text-gray-400 transition duration-300" />
+              </Link>
+        </div>
+      </section>
+
+      {/* Down Arrow Button */}
+      <button
+        onClick={scrollToNextSection}
+        className="animate-bounce fixed bottom-6 right-6 text-white p-3 rounded-full shadow-lg hover:bg-gray-600 transition"
+        aria-label="Scroll to Next Section"
+      >
+        <FaArrowAltCircleDown size={30} />
+      </button>
     </div>
   );
 }
