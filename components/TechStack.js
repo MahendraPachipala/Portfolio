@@ -103,9 +103,7 @@ export default function TechStack() {
           viewport={{ once: true }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          <p className="text-gray-400 italic">
-          &quot;Mastery is not about knowing all the tools, but knowing which tool to use and when.&quot;
-          </p>
+      
         </motion.div>
       </div>
     </motion.section>
