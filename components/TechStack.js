@@ -48,8 +48,9 @@ export default function TechStack() {
             </span> 🛠️
           </h2>
           <p className="text-xl bg-clip-text text-transparent bg-gradient-to-b from-zinc-700 via-zinc-300 to-zinc-700 max-w-2xl mx-auto">
-            Technologies I've mastered and tools I use to bring ideas to life
-          </p>
+  Technologies I&apos;ve mastered and tools I use to bring ideas to life
+</p>
+
         </motion.div>
 
         <motion.div 
