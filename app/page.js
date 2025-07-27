@@ -103,7 +103,7 @@ export default function Home() {
                   showDiv ? "opacity-0" : "opacity-100"
                 } flex gap-4 justify-center md:justify-start`}>
               <a
-                href="https://drive.google.com/file/d/1Ny7nGb4z3A4aynCbcW0n4es2mOtJYjeX/view?usp=sharing"
+                href={process.env.NEXT_PUBLIC_RESUME_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md transition"
