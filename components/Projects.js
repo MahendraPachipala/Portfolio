@@ -27,10 +27,15 @@ export default function Projects() {
       >
         {[
           {
-            title: "Movie Ticket Booking System",
+            title: "Task Management System",
             description:
-              "A full-featured movie ticket booking platform with seat selection and online payment.",
-            link: "https://movie-ticket-booking-pi-tan.vercel.app/home",
+              "AI-integrated task planner with Google Calendar automation.",
+            link: "https://ai-task-manager-murex.vercel.app/",
+          },
+          {
+            title: "News Aggregator App",
+            description: "AI-powered news summarization and real-time aggregation.",
+            link: "https://news-app-six-amber.vercel.app/",
           },
           {
             title: "Travel Booking System",
@@ -39,16 +44,11 @@ export default function Projects() {
             link: "https://travel-booking-frontend.vercel.app/home",
           },
           {
-            title: "News Aggregator App",
-            description: "AI-powered news summarization and real-time aggregation.",
-            link: "https://news-app-six-amber.vercel.app/",
-          },
-          {
-            title: "Task Management System",
+            title: "Movie Ticket Booking System",
             description:
-              "AI-integrated task planner with Google Calendar automation.",
-            link: "https://ai-task-manager-murex.vercel.app/",
-          },
+              "A full-featured movie ticket booking platform with seat selection and online payment.",
+            link: "https://movie-ticket-booking-pi-tan.vercel.app/home",
+          }
         ].map((project, index) => (
           <motion.div
             key={index}

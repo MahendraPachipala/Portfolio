@@ -84,11 +84,7 @@ export default function TechStack() {
                   {tech.icon}
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-1">{tech.name}</h3>
-                <div className="w-full bg-gray-700 rounded-full h-1.5">
-                  <div 
-                    className={`h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 ${proficiencyLevels[tech.level]}`}
-                  ></div>
-                </div>
+                
                 <span className="text-xs text-gray-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {tech.level}
                 </span>
