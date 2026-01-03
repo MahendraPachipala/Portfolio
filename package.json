@@ -13,7 +13,7 @@
     "gasp": "^0.0.2",
     "gsap": "^3.12.7",
     "less": "^4.2.2",
-    "next": "15.2.1",
+    "next": "15.2.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-github-calendar": "^4.5.6",
